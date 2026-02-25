@@ -1,0 +1,356 @@
+/* app/globals.css - Updated Premium Vibrant System */
+@import "tailwindcss";
+
+:root {
+  /* 🎨 Premium Vibrant Palette - Energetic but sophisticated */
+  --bg-primary: 255, 255, 255;        /* · Crisp white - clean canvas */
+  --bg-secondary: 250, 250, 250;       /* · Off-white - subtle depth */
+  --bg-tertiary: 245, 247, 250;        /* · Cool whisper - sophisticated */
+  
+  --fg-primary: 18, 18, 18;            /* · Rich black - bold contrast */
+  --fg-secondary: 60, 60, 70;           /* · Deep charcoal - refined */
+  
+  /* Vibrant Accents - Energetic, premium, colorful */
+  --accent-1: 218, 41, 28;              /* · Energetic red - passion, speaking */
+  --accent-2: 10, 102, 194;              /* · Trust blue - professional speaking */
+  --accent-3: 255, 184, 0;               /* · Warm gold - premium, stage presence */
+  --accent-4: 0, 200, 200;                /* · Vibrant teal - modern, fresh */
+  
+  /* Neutrals - Clean and premium */
+  --text-primary: 18, 18, 18;
+  --text-secondary: 80, 80, 90;
+  --text-tertiary: 140, 140, 150;
+  --border: 230, 230, 235;
+  
+  /* Spacing - Refined proportions */
+  --space-xs: clamp(0.5rem, 1vw, 0.75rem);
+  --space-sm: clamp(1rem, 2vw, 1.5rem);
+  --space-md: clamp(1.5rem, 3vw, 2.5rem);
+  --space-lg: clamp(2rem, 5vw, 4rem);
+  --space-xl: clamp(3rem, 8vw, 6rem);
+  --space-2xl: clamp(4rem, 10vw, 8rem);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  html { font-size: 15px; }
+}
+
+body {
+  background: rgb(var(--bg-primary));
+  color: rgb(var(--fg-primary));
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Premium Typography System */
+h1, h2, h3, .heading-premium {
+  font-family: var(--font-outfit), var(--font-inter), sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 600;
+}
+
+/* Premium Serif for personality */
+.serif-premium {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Modern Display for special moments */
+.display-premium {
+  font-family: var(--font-syne), var(--font-outfit), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Tech-forward for stats/numbers */
+.grotesk-premium {
+  font-family: var(--font-grotesk), monospace;
+  font-weight: 500;
+}
+
+/* Body Text */
+.body-large {
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  line-height: 1.6;
+  color: rgb(var(--text-secondary));
+  font-weight: 400;
+  font-family: var(--font-jakarta), sans-serif;
+}
+
+.body-regular {
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  line-height: 1.6;
+  color: rgb(var(--text-secondary));
+  font-family: var(--font-jakarta), sans-serif;
+}
+
+/* Premium Labels */
+.label-premium {
+  font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgb(var(--accent-1));
+  font-family: var(--font-inter), sans-serif;
+}
+
+.label-premium-light {
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgb(var(--text-tertiary));
+  font-weight: 500;
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Vibrant Gradients */
+.gradient-accent-1 {
+  background: linear-gradient(135deg, rgb(var(--accent-1)), rgb(var(--accent-3)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-accent-2 {
+  background: linear-gradient(135deg, rgb(var(--accent-2)), rgb(var(--accent-4)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Premium Glass Effect */
+.glass-premium {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+}
+
+.glass-premium-dark {
+  background: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Premium Border */
+.border-premium {
+  border: 1px solid rgb(var(--border));
+  border-radius: 24px;
+}
+
+/* Subtle Shadows */
+.shadow-premium {
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05),
+              0 0 0 1px rgba(0, 0, 0, 0.02);
+}
+
+.shadow-premium-hover {
+  transition: all 0.3s ease;
+}
+
+.shadow-premium-hover:hover {
+  box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.1),
+              0 0 0 1px rgba(0, 0, 0, 0.02);
+  transform: translateY(-2px);
+}
+
+/* Premium Dividers */
+.divider-premium {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, rgb(var(--accent-1)), rgb(var(--accent-3)));
+  border-radius: 2px;
+}
+
+.divider-premium-vertical {
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(180deg, rgb(var(--accent-1)), rgb(var(--accent-3)));
+  border-radius: 2px;
+}
+
+/* Premium Button */
+.btn-premium {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 2rem;
+  background: rgb(var(--fg-primary));
+  color: white;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 40px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-premium:hover::before {
+  left: 100%;
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-premium-outline {
+  background: transparent;
+  border: 1px solid rgb(var(--border));
+  color: rgb(var(--fg-primary));
+}
+
+.btn-premium-outline:hover {
+  border-color: rgb(var(--accent-1));
+  background: rgba(var(--accent-1), 0.05);
+}
+
+/* Premium Cards */
+.card-premium {
+  background: white;
+  border-radius: 24px;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid rgb(var(--border));
+  transition: all 0.3s ease;
+}
+
+.card-premium:hover {
+  border-color: rgb(var(--accent-1));
+  box-shadow: 0 30px 50px -20px rgba(var(--accent-1), 0.1);
+}
+
+/* Mobile-first container */
+.container-premium {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1.2rem, 5vw, 2rem);
+}
+
+/* Premium animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+/* Mobile-optimized touch targets */
+@media (max-width: 768px) {
+  button, 
+  [role="button"],
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .btn-premium {
+    padding: 0.7rem 1.5rem;
+  }
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--bg-secondary));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--text-tertiary));
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--accent-1));
+}
+
+/* Selection style */
+::selection {
+  background: rgb(var(--accent-1));
+  color: white;
+}
+
+/* Premium spacing utilities */
+.section-premium {
+  padding: var(--space-2xl) 0;
+}
+
+@media (max-width: 768px) {
+  .section-premium {
+    padding: var(--space-xl) 0;
+  }
+}
