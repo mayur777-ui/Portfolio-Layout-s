@@ -34,7 +34,7 @@ import journey2 from '@/images/journey2.jpg';
 
 // lib/data/index.ts - Update hero section
 export const heroData: HeroData = {
-  firstName: "SOURADHYA",
+  firstName: "Souhardya",
   lastName: "BOSE",
   photo: heroImg.src, // Using existing image
   stat: {
