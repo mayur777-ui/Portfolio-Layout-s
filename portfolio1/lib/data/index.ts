@@ -1,10 +1,4 @@
 // app/data/index.ts
-import { HeroData } from "../types/hero";
-import { GalleryData } from "../types/gallery";
-import { JourneyData } from "../types/journey";
-import { AchievementsData } from "../types/achievements";
-import { TestimonialsData } from "../types/testimonials";
-import { ContactData } from "../types/contact";
 
 // Import images
 import heroImg from "@/images/heroImg.png";
@@ -32,11 +26,120 @@ import community5 from "@/images/community/community5.jpg";
 import journey1 from '@/images/journey1.jpg';
 import journey2 from '@/images/journey2.jpg';
 
-// lib/data/index.ts - Update hero section
+// ========== LOCAL TYPE DEFINITIONS ==========
+
+type HeroData = {
+  firstName: string;
+  lastName: string;
+  photo: any; // StaticImageData type from next/image
+  stat: {
+    number: string;
+    label: string;
+  };
+  location: string;
+  established: string;
+  cta: {
+    primary: { label: string; href: string; icon: string };
+    secondary: { label: string; href: string; icon: string };
+  };
+};
+
+type GalleryItem = {
+  id: string;
+  src: any; // StaticImageData
+  alt: string;
+  caption: string;
+  category: string;
+  year: string;
+  event: string;
+};
+
+type GalleryCategory = {
+  id: string;
+  name: string;
+  items: GalleryItem[];
+};
+
+type GalleryData = {
+  title: string;
+  categories: GalleryCategory[];
+};
+
+type JourneyItem = {
+  id: string;
+  year: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  media: {
+    type: "image" | "youtube";
+    src: any; // StaticImageData or string URL
+  };
+  metric: string;
+  metricLabel: string;
+};
+
+type JourneyData = {
+  title: string;
+  items: JourneyItem[];
+};
+
+type AchievementStat = {
+  value: string;
+  label: string;
+  description: string;
+};
+
+type AchievementItem = {
+  id: string;
+  text: string;
+  category: string;
+  year: string;
+  icon: string;
+};
+
+type AchievementsData = {
+  title: string;
+  stats: AchievementStat[];
+  items: AchievementItem[];
+};
+
+type TestimonialItem = {
+  id: string;
+  name: string;
+  role: string;
+  company: string;
+  text: string;
+  rating: number;
+  featured: boolean;
+};
+
+type TestimonialsData = {
+  title: string;
+  items: TestimonialItem[];
+};
+
+type ContactSocial = {
+  platform: string;
+  url: string;
+  icon: string;
+  handle: string;
+  followers: string;
+};
+
+type ContactData = {
+  email: string;
+  location: string;
+  responseTime: string;
+  socials: ContactSocial[];
+};
+
+// ========== DATA EXPORTS WITH TYPE ANNOTATIONS ==========
+
 export const heroData: HeroData = {
   firstName: "Souhardya",
   lastName: "BOSE",
-  photo: heroImg.src, // Using existing image
+  photo: heroImg, // Fixed: removed .src
   stat: {
     number: "5000+",
     label: "STUDENTS"
@@ -56,61 +159,61 @@ export const galleryData: GalleryData = {
       id: "events",
       name: "Events",
       items: [
-        { id: "e1", src: Event1.src, alt: "Sukoon - Youthfest", caption: "Sukoon - Youthfest", category: "event", year: "2023", event: "Cultural Festival" },
-        { id: "e2", src: Event2.src, alt: "TechnOcean", caption: "TechnOcean - Tech Fest", category: "event", year: "2023", event: "Technical Summit" },
-        { id: "e3", src: Event3.src, alt: "XPRESSIONS", caption: "XPRESSIONS - Media Fest", category: "event", year: "2022", event: "Media Festival" },
-        { id: "e4", src: Event4.src, alt: "GET PLACED", caption: "GET PLACED - Career Workshop", category: "event", year: "2022", event: "Workshop" },
-        { id: "e5", src: Event5.src, alt: "Chai ka Anubhav", caption: "Chai ka Anubhav with Anubhav Dubey", category: "event", year: "2023", event: "Inspirational Talk" },
-        { id: "e6", src: Event1.src, alt: "Podcast Session", caption: "Podcast with Rahul Maheshwari", category: "event", year: "2023", event: "Podcast" },
-        { id: "e7", src: Event2.src, alt: "Workshop", caption: "Technical Workshop", category: "event", year: "2022", event: "Workshop" },
-        { id: "e8", src: Event3.src, alt: "Seminar", caption: "Leadership Seminar", category: "event", year: "2023", event: "Seminar" },
-        { id: "e9", src: Event4.src, alt: "Hackathon", caption: "Campus Hackathon", category: "event", year: "2022", event: "Hackathon" },
-        { id: "e10", src: Event5.src, alt: "Conference", caption: "Student Conference", category: "event", year: "2023", event: "Conference" },
+        { id: "e1", src: Event1, alt: "Sukoon - Youthfest", caption: "Sukoon - Youthfest", category: "event", year: "2023", event: "Cultural Festival" },
+        { id: "e2", src: Event2, alt: "TechnOcean", caption: "TechnOcean - Tech Fest", category: "event", year: "2023", event: "Technical Summit" },
+        { id: "e3", src: Event3, alt: "XPRESSIONS", caption: "XPRESSIONS - Media Fest", category: "event", year: "2022", event: "Media Festival" },
+        { id: "e4", src: Event4, alt: "GET PLACED", caption: "GET PLACED - Career Workshop", category: "event", year: "2022", event: "Workshop" },
+        { id: "e5", src: Event5, alt: "Chai ka Anubhav", caption: "Chai ka Anubhav with Anubhav Dubey", category: "event", year: "2023", event: "Inspirational Talk" },
+        { id: "e6", src: Event1, alt: "Podcast Session", caption: "Podcast with Rahul Maheshwari", category: "event", year: "2023", event: "Podcast" },
+        { id: "e7", src: Event2, alt: "Workshop", caption: "Technical Workshop", category: "event", year: "2022", event: "Workshop" },
+        { id: "e8", src: Event3, alt: "Seminar", caption: "Leadership Seminar", category: "event", year: "2023", event: "Seminar" },
+        { id: "e9", src: Event4, alt: "Hackathon", caption: "Campus Hackathon", category: "event", year: "2022", event: "Hackathon" },
+        { id: "e10", src: Event5, alt: "Conference", caption: "Student Conference", category: "event", year: "2023", event: "Conference" },
       ]
     },
     {
       id: "youth",
       name: "Youth Icons",
       items: [
-        { id: "y1", src: youth1.src, alt: "Faisal Malik", caption: "Faisal Malik - Actor", category: "youth", year: "2023", event: "Xpression" },
-        { id: "y2", src: youth2.src, alt: "Sourabh Dubey", caption: "Sourabh Dubey - Speaker", category: "youth", year: "2023", event: "Xpression" },
-        { id: "y3", src: youth3.src, alt: "Nishant Chahar", caption: "Nishant Chahar - SDE Microsoft", category: "youth", year: "2022", event: "Get Placed" },
-        { id: "y4", src: youth4.src, alt: "Subhesh Kumar", caption: "Subhesh Kumar - SDE Amazon", category: "youth", year: "2022", event: "Get Placed" },
-        { id: "y5", src: youth5.src, alt: "Rahul Maheshwari", caption: "Rahul Maheshwari - Ex-Google", category: "youth", year: "2023", event: "Podcast" },
-        { id: "y6", src: youth6.src, alt: "Aman Dhattarwal", caption: "Aman Dhattarwal - Apna College", category: "youth", year: "2023", event: "Session" },
-        { id: "y7", src: youth1.src, alt: "Shashank Mishra", caption: "Shashank Mishra - Data Engineer", category: "youth", year: "2022", event: "Mentorship" },
-        { id: "y8", src: youth2.src, alt: "Anuj Kumar Sharma", caption: "Anuj Kumar Sharma - Ex-Amazon", category: "youth", year: "2023", event: "Session" },
-        { id: "y9", src: youth3.src, alt: "Rocky Bhatia", caption: "Rocky Bhatia - Technical Lead", category: "youth", year: "2023", event: "Workshop" },
+        { id: "y1", src: youth1, alt: "Faisal Malik", caption: "Faisal Malik - Actor", category: "youth", year: "2023", event: "Xpression" },
+        { id: "y2", src: youth2, alt: "Sourabh Dubey", caption: "Sourabh Dubey - Speaker", category: "youth", year: "2023", event: "Xpression" },
+        { id: "y3", src: youth3, alt: "Nishant Chahar", caption: "Nishant Chahar - SDE Microsoft", category: "youth", year: "2022", event: "Get Placed" },
+        { id: "y4", src: youth4, alt: "Subhesh Kumar", caption: "Subhesh Kumar - SDE Amazon", category: "youth", year: "2022", event: "Get Placed" },
+        { id: "y5", src: youth5, alt: "Rahul Maheshwari", caption: "Rahul Maheshwari - Ex-Google", category: "youth", year: "2023", event: "Podcast" },
+        { id: "y6", src: youth6, alt: "Aman Dhattarwal", caption: "Aman Dhattarwal - Apna College", category: "youth", year: "2023", event: "Session" },
+        { id: "y7", src: youth1, alt: "Shashank Mishra", caption: "Shashank Mishra - Data Engineer", category: "youth", year: "2022", event: "Mentorship" },
+        { id: "y8", src: youth2, alt: "Anuj Kumar Sharma", caption: "Anuj Kumar Sharma - Ex-Amazon", category: "youth", year: "2023", event: "Session" },
+        { id: "y9", src: youth3, alt: "Rocky Bhatia", caption: "Rocky Bhatia - Technical Lead", category: "youth", year: "2023", event: "Workshop" },
       ]
     },
     {
       id: "institutional",
       name: "Institutional Leaders",
       items: [
-        { id: "i1", src: institute1.src, alt: "Dr. Preeti Bajaj", caption: "Dr. Preeti Bajaj - Vice Chancellor", category: "institutional", year: "2023", event: "Convocation" },
-        { id: "i2", src: institute2.src, alt: "Dr. Prateek Agrawal", caption: "Dr. Prateek Agrawal - Head of School", category: "institutional", year: "2023", event: "Academic Council" },
-        { id: "i3", src: institute3.src, alt: "Dr. Lovi Raj Gupta", caption: "Dr. Lovi Raj Gupta - Pro Vice Chancellor", category: "institutional", year: "2022", event: "TechnOcean" },
-        { id: "i4", src: institute4.src, alt: "Madam Rashmi Mittal", caption: "Madam Rashmi Mittal - Pro Chancellor", category: "institutional", year: "2022", event: "Convocation" },
-        { id: "i5", src: institute5.src, alt: "Sami Anand", caption: "Sami Anand - Associate Dean", category: "institutional", year: "2023", event: "Faculty Meet" },
-        { id: "i6", src: institute1.src, alt: "Sorabh Lakhanpal", caption: "Sorabh Lakhanpal - Senior Dean", category: "institutional", year: "2023", event: "Conference" },
+        { id: "i1", src: institute1, alt: "Dr. Preeti Bajaj", caption: "Dr. Preeti Bajaj - Vice Chancellor", category: "institutional", year: "2023", event: "Convocation" },
+        { id: "i2", src: institute2, alt: "Dr. Prateek Agrawal", caption: "Dr. Prateek Agrawal - Head of School", category: "institutional", year: "2023", event: "Academic Council" },
+        { id: "i3", src: institute3, alt: "Dr. Lovi Raj Gupta", caption: "Dr. Lovi Raj Gupta - Pro Vice Chancellor", category: "institutional", year: "2022", event: "TechnOcean" },
+        { id: "i4", src: institute4, alt: "Madam Rashmi Mittal", caption: "Madam Rashmi Mittal - Pro Chancellor", category: "institutional", year: "2022", event: "Convocation" },
+        { id: "i5", src: institute5, alt: "Sami Anand", caption: "Sami Anand - Associate Dean", category: "institutional", year: "2023", event: "Faculty Meet" },
+        { id: "i6", src: institute1, alt: "Sorabh Lakhanpal", caption: "Sorabh Lakhanpal - Senior Dean", category: "institutional", year: "2023", event: "Conference" },
       ]
     },
     {
       id: "community",
       name: "Community",
       items: [
-        { id: "c1", src: community1.src, alt: "Student Mentorship", caption: "One-on-One Mentorship", category: "community", year: "2023", event: "Mentorship" },
-        { id: "c2", src: community2.src, alt: "Workshop", caption: "Hands-on Technical Workshop", category: "community", year: "2023", event: "Workshop" },
-        { id: "c3", src: community3.src, alt: "Group Discussion", caption: "Student-Led Discussion Circle", category: "community", year: "2022", event: "Discussion" },
-        { id: "c4", src: community4.src, alt: "Award Ceremony", caption: "Recognizing Excellence", category: "community", year: "2023", event: "Awards" },
-        { id: "c5", src: community5.src, alt: "Team Meeting", caption: "Community Planning", category: "community", year: "2022", event: "Meeting" },
-        { id: "c6", src: community1.src, alt: "Campus Drive", caption: "Student Engagement Campaign", category: "community", year: "2023", event: "Outreach" },
-        { id: "c7", src: community2.src, alt: "Guest Lecture", caption: "Industry Expert Session", category: "community", year: "2023", event: "Lecture" },
-        { id: "c8", src: community3.src, alt: "Cultural Night", caption: "Celebrating Diversity", category: "community", year: "2022", event: "Cultural" },
-        { id: "c9", src: community4.src, alt: "Tech Talk", caption: "Emerging Technologies", category: "community", year: "2023", event: "Tech Talk" },
-        { id: "c10", src: community5.src, alt: "Alumni Meet", caption: "Connecting Generations", category: "community", year: "2023", event: "Alumni" },
-        { id: "c11", src: community1.src, alt: "Orientation", caption: "Welcoming New Students", category: "community", year: "2022", event: "Orientation" },
-        { id: "c12", src: community2.src, alt: "Farewell", caption: "Celebrating Graduates", category: "community", year: "2023", event: "Farewell" },
+        { id: "c1", src: community1, alt: "Student Mentorship", caption: "One-on-One Mentorship", category: "community", year: "2023", event: "Mentorship" },
+        { id: "c2", src: community2, alt: "Workshop", caption: "Hands-on Technical Workshop", category: "community", year: "2023", event: "Workshop" },
+        { id: "c3", src: community3, alt: "Group Discussion", caption: "Student-Led Discussion Circle", category: "community", year: "2022", event: "Discussion" },
+        { id: "c4", src: community4, alt: "Award Ceremony", caption: "Recognizing Excellence", category: "community", year: "2023", event: "Awards" },
+        { id: "c5", src: community5, alt: "Team Meeting", caption: "Community Planning", category: "community", year: "2022", event: "Meeting" },
+        { id: "c6", src: community1, alt: "Campus Drive", caption: "Student Engagement Campaign", category: "community", year: "2023", event: "Outreach" },
+        { id: "c7", src: community2, alt: "Guest Lecture", caption: "Industry Expert Session", category: "community", year: "2023", event: "Lecture" },
+        { id: "c8", src: community3, alt: "Cultural Night", caption: "Celebrating Diversity", category: "community", year: "2022", event: "Cultural" },
+        { id: "c9", src: community4, alt: "Tech Talk", caption: "Emerging Technologies", category: "community", year: "2023", event: "Tech Talk" },
+        { id: "c10", src: community5, alt: "Alumni Meet", caption: "Connecting Generations", category: "community", year: "2023", event: "Alumni" },
+        { id: "c11", src: community1, alt: "Orientation", caption: "Welcoming New Students", category: "community", year: "2022", event: "Orientation" },
+        { id: "c12", src: community2, alt: "Farewell", caption: "Celebrating Graduates", category: "community", year: "2023", event: "Farewell" },
       ]
     }
   ]
@@ -125,7 +228,7 @@ export const journeyData: JourneyData = {
       title: "Foundations in Community",
       subtitle: "Early beliefs",
       description: "Early exposure to strong communities shaped a belief that people grow best when supported collectively. Started with 5 students in a classroom. No budget. Just belief.",
-      media: { type: "image", src: journey1.src },
+      media: { type: "image", src: journey1 },
       metric: "5→50",
       metricLabel: "community members"
     },
@@ -135,7 +238,7 @@ export const journeyData: JourneyData = {
       title: "Learning Through Practice",
       subtitle: "Events & technology",
       description: "Hands-on work in event management and technical projects built a deep understanding of creating meaningful experiences that resonate and inspire action.",
-      media: { type: "image", src: journey2.src },
+      media: { type: "image", src: journey2 },
       metric: "12",
       metricLabel: "events organized"
     },
@@ -155,7 +258,7 @@ export const journeyData: JourneyData = {
       title: "Long-Term Purpose",
       subtitle: "Sustainable growth",
       description: "Focused on building systems and programs that continue to support communities over time. Passed down, improved, reimagined by each new cohort.",
-      media: { type: "image", src: journey2.src },
+      media: { type: "image", src: journey2 },
       metric: "4",
       metricLabel: "active programs"
     }
